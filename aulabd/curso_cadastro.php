@@ -19,3 +19,4 @@
             <br>
             <input type="submit" name="Enviar" value="Cadastrar Curso"> 
         </fieldset>
+</form>

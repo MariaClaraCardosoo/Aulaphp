@@ -8,36 +8,35 @@
 </head>
 <body>
 
- <?php include "menu.php" ?>
+    <?php include "menu.php" ?>
 
- <div class="conteudo">
-    <h3> Confirmação de cadastro </h3>
+    <div class="conteudo">
+        <h3>Confirmação de cadastro</h3>
 
+    <?php
 
-    <?php 
-    
-    if ( isset($_REQUEST["enviar"]) )
-    {
-        include "conexao.php";
-        $nome = $_REQUEST["nome"];
-        $cidade = $_REQUEST["cidade"];
-        $estado = $_REQUEST["estado"];
+        if ( isset($_REQUEST["enviar"]) )
+        {
+            include "conexao.php";
 
-        $sql = "insert into alunos (nome, cidade, estado) VALUES (:nome, :cidade, :estado)";
+            $nome = $_REQUEST["nome"];
+            $cidade = $_REQUEST["cidade"];
+            $estado = $_REQUEST["estado"];
 
-        $result = $conexao->prepare($sql);
-        $result->bindValue(":nome", $nome);
-        $result->bindValue(":cidade", $cidade);
-        $result->bindValue(":estado", $estado);
-        $result->execute();
+            $sql = "insert into alunos (nome, cidade, estado) values (:nome, :cidade, :estado)";
 
-        echo "<p>Aluno cadastrado com sucesso!!</p>";
+            $result = $conexao->prepare($sql);
+            $result->bindValue(":nome", $nome);
+            $result->bindValue(":cidade", $cidade);
+            $result->bindValue(":estado", $estado); 
+            $result->execute();
 
-    }
-     
+            echo "Aluno cadastrado com sucesso!<br>";
+        }
     ?>
-<a href="aluno_cadastro.php">Voltar</a>
-</div>
 
+        <a href="aluno_cadastro.php">Voltar</a>
+    </div>
+    
 </body>
 </html>
